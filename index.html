@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Портфолио Эллис</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #000;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 30px;
+        }
+        .project {
+            width: 300px;
+        }
+        .project img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .project img:hover {
+            transform: scale(1.05);
+        }
+        .description {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .details {
+            display: none;
+            margin-top: 10px;
+            font-size: 14px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>Портфолио Эллис</header>
+    <p>Добро пожаловать в моё портфолио. Здесь собраны лучшие визуализации.</p>
+    <div class="gallery">
+        <div class="project" onclick="toggleDetails(0)">
+            <img src="images/project1.jpg" alt="Офис с Давидом">
+            <div class="description">Офис с Давидом</div>
+            <div class="details">Это светлый и современный офис с акцентом на классическое искусство. Пространство организовано для продуктивной работы и вдохновения.</div>
+        </div>
+        <div class="project" onclick="toggleDetails(1)">
+            <img src="images/project2.jpg" alt="Современная гостиная">
+            <div class="description">Современная гостиная</div>
+            <div class="details">Интерьер выполнен в теплых нейтральных тонах. Панорамные окна наполняют комнату светом и раскрывают природный вид за окном.</div>
+        </div>
+        <div class="project" onclick="toggleDetails(2)">
+            <img src="images/project3.jpg" alt="Тёплый прованс">
+            <div class="description">Тёплый прованс</div>
+            <div class="details">Уютный интерьер в стиле прованс, с винтажной мебелью, текстилем и цветочными узорами. Атмосфера спокойствия и домашнего тепла.</div>
+        </div>
+    </div>
+    <script>
+        function toggleDetails(index) {
+            const allDetails = document.querySelectorAll('.details');
+            allDetails.forEach((detail, i) => {
+                if (i === index) {
+                    detail.style.display = detail.style.display === 'block' ? 'none' : 'block';
+                } else {
+                    detail.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
