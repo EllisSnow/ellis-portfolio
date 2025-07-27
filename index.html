@@ -53,6 +53,10 @@
       font-size: 24px;
     }
     .gallery {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease;
+
       display: none;
       margin-top: 20px;
     }
@@ -199,17 +203,18 @@
     const gallery = project.querySelector('.gallery');
     const preview = project.querySelector('.preview-block');
 
-    if (gallery.style.display === "block") {
-      gallery.style.display = "none";
+    if (gallery.style.maxHeight && gallery.style.maxHeight !== "0px") {
+      gallery.style.maxHeight = "0";
       preview.style.display = "block";
     } else {
-      gallery.style.display = "block";
+      gallery.style.display = "block"; // в случае если display был none
+      gallery.style.maxHeight = gallery.scrollHeight + "px";
       preview.style.display = "none";
 
-      // Вешаем обработчик на все изображения в галерее
+      // Вешаем обработчик на все изображения
       gallery.querySelectorAll('img').forEach(img => {
         img.onclick = () => {
-          gallery.style.display = "none";
+          gallery.style.maxHeight = "0";
           preview.style.display = "block";
         };
       });
