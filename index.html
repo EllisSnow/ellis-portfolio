@@ -1,89 +1,200 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Портфолио Елены Сырцевой</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Портфолио Эллис</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f8f6;
+      margin: 0;
+      padding: 20px;
+      color: #2c2c2c;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+    .project {
+      border-top: 1px solid #ccc;
+      padding: 20px 0;
+    }
+    .project-header {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .project-header img {
+      max-width: 300px;
+      margin-right: 20px;
+      border-radius: 8px;
+    }
+    .project-header h2 {
+      margin: 0;
+      font-size: 1.5em;
+    }
+    .project-description {
+      font-size: 1em;
+      margin-top: 10px;
+      max-width: 500px;
+    }
+    .gallery {
+      display: none;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .gallery img {
+      max-width: 300px;
+      border-radius: 6px;
+    }
+    .toggle {
+      background: none;
+      border: none;
+      color: #555;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function toggleGallery(id) {
+      const gallery = document.getElementById(id);
+      gallery.style.display = gallery.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
 </head>
 <body>
-<header>
-    <img src="1.png" alt="Ellis Banner" class="banner">
-</header>
-<main>
+  <h1>Портфолио Эллис Снег</h1>
 
-    <section class="project">
-        <button class="toggle-button" onclick="toggleSection('Atmosf')">Проект Atmosf</button>
-        <div class="project-content" id="Atmosf" style="display: none;">
-<img src="Atmosf/1.jpg" alt="1.jpg">
-<img src="Atmosf/2.png" alt="2.png">
-</div></section>
+<div style="text-align:center;">
+  <img src="images/banner.jpg" alt="Баннер" style="max-width:100%; border-radius:12px; margin-bottom:30px;">
+</div>
 
-    <section class="project">
-        <button class="toggle-button" onclick="toggleSection('Domik')">Гостевой домик в Латвии</button>
-        <div class="project-content" id="Domik" style="display: none;">
-<img src="Domik/1.jpg" alt="1.jpg">
-<img src="Domik/2.jpg" alt="2.jpg">
-<img src="Domik/3.jpg" alt="3.jpg">
-<img src="Domik/preview.jpg" alt="preview.jpg">
-</div></section>
+  
+<div class="project">
+  <div class="project-header" onclick="toggleGallery('project1')">
+    <img src="images/project1_preview.jpg" alt="Обложка проекта">
+    <div>
+      <h2>Тёплая атмосфера</h2>
+      <p class="project-description">Нежный интерьер, наполненный светом и натуральными материалами.</p>
+    </div>
+  </div>
+  <div class="gallery" id="project1">
+    <img src="images/project1_1.jpg" alt="Картинка проекта">
+<img src="images/project1_2.jpg" alt="Картинка проекта">
+<img src="images/project1_3.jpg" alt="Картинка проекта">
+  </div>
+</div>
 
-    <section class="project">
-        <button class="toggle-button" onclick="toggleSection('Klassic')">Питерская классика</button>
-        <div class="project-content" id="Klassic" style="display: none;">
-<img src="Klassic/1.jpg" alt="1.jpg">
-<img src="Klassic/2.jpg" alt="2.jpg">
-<img src="Klassic/3.jpg" alt="3.jpg">
-<img src="Klassic/4.jpg" alt="4.jpg">
-<img src="Klassic/5.jpg" alt="5.jpg">
-<img src="Klassic/preview.jpg" alt="preview.jpg">
-</div></section>
 
-    <section class="project">
-        <button class="toggle-button" onclick="toggleSection('Prostransnvo')">Интерьер с пространством</button>
-        <div class="project-content" id="Prostransnvo" style="display: none;">
-<img src="Prostransnvo/1.jpeg" alt="1.jpeg">
-<img src="Prostransnvo/2.jpeg" alt="2.jpeg">
-<img src="Prostransnvo/3.jpg" alt="3.jpg">
-<img src="Prostransnvo/4.jpg" alt="4.jpg">
-<img src="Prostransnvo/5.jpeg" alt="5.jpeg">
-<img src="Prostransnvo/preview.jpg" alt="preview.jpg">
-</div></section>
+<div class="project">
+  <div class="project-header" onclick="toggleGallery('project2')">
+    <img src="images/project2_preview.jpg" alt="Обложка проекта">
+    <div>
+      <h2>Современный стиль</h2>
+      <p class="project-description">Решение для европейского застройщика с фокусом на практичность.</p>
+    </div>
+  </div>
+  <div class="gallery" id="project2">
+    <img src="images/project2_1.jpg" alt="Картинка проекта">
+<img src="images/project2_2.jpg" alt="Картинка проекта">
+<img src="images/project2_3.jpg" alt="Картинка проекта">
+<img src="images/project2_4.jpg" alt="Картинка проекта">
+<img src="images/project2_5.jpg" alt="Картинка проекта">
+<img src="images/project2_6.jpg" alt="Картинка проекта">
+  </div>
+</div>
 
-    <section class="project">
-        <button class="toggle-button" onclick="toggleSection('Provans')">Тёплый Прованс</button>
-        <div class="project-content" id="Provans" style="display: none;">
-<img src="Provans/1.jpg" alt="1.jpg">
-<img src="Provans/2.jpg" alt="2.jpg">
-<img src="Provans/3.jpg" alt="3.jpg">
-<img src="Provans/4.jpg" alt="4.jpg">
-<img src="Provans/5.jpg" alt="5.jpg">
-<img src="Provans/preview.jpg" alt="preview.jpg">
-</div></section>
 
-    <section class="project">
-        <button class="toggle-button" onclick="toggleSection('Sovremenn')">Современное пространство</button>
-        <div class="project-content" id="Sovremenn" style="display: none;">
-<img src="Sovremenn/1.jpg" alt="1.jpg">
-<img src="Sovremenn/2.jpg" alt="2.jpg">
-<img src="Sovremenn/preview.jpg" alt="preview.jpg">
-</div></section>
+<div class="project">
+  <div class="project-header" onclick="toggleGallery('project3')">
+    <img src="images/project3_preview.jpg" alt="Обложка проекта">
+    <div>
+      <h2>Классика и уют</h2>
+      <p class="project-description">Проект квартиры с классическим настроением для семьи.</p>
+    </div>
+  </div>
+  <div class="gallery" id="project3">
+    <img src="images/project3_1.jpg" alt="Картинка проекта">
+<img src="images/project3_2.jpg" alt="Картинка проекта">
+<img src="images/project3_3.jpg" alt="Картинка проекта">
+<img src="images/project3_4.jpg" alt="Картинка проекта">
+<img src="images/project3_5.jpg" alt="Картинка проекта">
+<img src="images/project3_6.jpg" alt="Картинка проекта">
+  </div>
+</div>
 
-    <section class="project">
-        <button class="toggle-button" onclick="toggleSection('Teplo')">Интерьер с теплотой</button>
-        <div class="project-content" id="Teplo" style="display: none;">
-<img src="Teplo/1.jpg" alt="1.jpg">
-<img src="Teplo/2.jpg" alt="2.jpg">
-</div></section>
 
-</main>
-<footer>
-    <p>Контакты: elenasyrceva@gmail.com | Telegram: @elenasyrceva | VK: vk.com/elenasyrceva</p>
-</footer>
-<script>
-    function toggleSection(id) {
-        const section = document.getElementById(id);
-        section.style.display = section.style.display === "none" ? "block" : "none";
-    }
-</script>
+<div class="project">
+  <div class="project-header" onclick="toggleGallery('project4')">
+    <img src="images/project4_preview.jpg" alt="Обложка проекта">
+    <div>
+      <h2>Пространство и свет</h2>
+      <p class="project-description">Интерьер с элементами скандинавского минимализма.</p>
+    </div>
+  </div>
+  <div class="gallery" id="project4">
+    <img src="images/project4_1.jpg" alt="Картинка проекта">
+<img src="images/project4_2.jpg" alt="Картинка проекта">
+  </div>
+</div>
+
+
+<div class="project">
+  <div class="project-header" onclick="toggleGallery('project5')">
+    <img src="images/project5_preview.jpg" alt="Обложка проекта">
+    <div>
+      <h2>Прованс и тепло</h2>
+      <p class="project-description">Прованский стиль в частном доме в Калининграде.</p>
+    </div>
+  </div>
+  <div class="gallery" id="project5">
+    <img src="images/project5_1.jpg" alt="Картинка проекта">
+<img src="images/project5_2.jpg" alt="Картинка проекта">
+  </div>
+</div>
+
+
+<div class="project">
+  <div class="project-header" onclick="toggleGallery('project6')">
+    <img src="images/project6_preview.jpg" alt="Обложка проекта">
+    <div>
+      <h2>Функциональность и форма</h2>
+      <p class="project-description">Баннеры и рекламные визуализации по ТЗ клиента.</p>
+    </div>
+  </div>
+  <div class="gallery" id="project6">
+    <img src="images/project6_1.jpg" alt="Картинка проекта">
+<img src="images/project6_2.jpg" alt="Картинка проекта">
+<img src="images/project6_3.jpg" alt="Картинка проекта">
+<img src="images/project6_4.jpg" alt="Картинка проекта">
+  </div>
+</div>
+
+
+<div class="project">
+  <div class="project-header" onclick="toggleGallery('project7')">
+    <img src="images/project7_preview.jpg" alt="Обложка проекта">
+    <div>
+      <h2>Уютная гостиная</h2>
+      <p class="project-description">Интерьер гостевого домика в Латвии. Проект для отдыха.</p>
+    </div>
+  </div>
+  <div class="gallery" id="project7">
+    <img src="images/project7_1.jpg" alt="Картинка проекта">
+<img src="images/project7_2.jpg" alt="Картинка проекта">
+<img src="images/project7_3.jpg" alt="Картинка проекта">
+<img src="images/project7_4.jpg" alt="Картинка проекта">
+<img src="images/project7_5.jpg" alt="Картинка проекта">
+<img src="images/project7_6.jpg" alt="Картинка проекта">
+  </div>
+</div>
+
 </body>
 </html>
