@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Портфолио Елены Сырцевой</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <img src="1.png" alt="Ellis Banner" class="banner">
+</header>
+<main>
+
+    <section class="project">
+        <button class="toggle-button" onclick="toggleSection('Atmosf')">Проект Atmosf</button>
+        <div class="project-content" id="Atmosf" style="display: none;">
+<img src="Atmosf/1.jpg" alt="1.jpg">
+<img src="Atmosf/2.png" alt="2.png">
+</div></section>
+
+    <section class="project">
+        <button class="toggle-button" onclick="toggleSection('Domik')">Гостевой домик в Латвии</button>
+        <div class="project-content" id="Domik" style="display: none;">
+<img src="Domik/1.jpg" alt="1.jpg">
+<img src="Domik/2.jpg" alt="2.jpg">
+<img src="Domik/3.jpg" alt="3.jpg">
+<img src="Domik/preview.jpg" alt="preview.jpg">
+</div></section>
+
+    <section class="project">
+        <button class="toggle-button" onclick="toggleSection('Klassic')">Питерская классика</button>
+        <div class="project-content" id="Klassic" style="display: none;">
+<img src="Klassic/1.jpg" alt="1.jpg">
+<img src="Klassic/2.jpg" alt="2.jpg">
+<img src="Klassic/3.jpg" alt="3.jpg">
+<img src="Klassic/4.jpg" alt="4.jpg">
+<img src="Klassic/5.jpg" alt="5.jpg">
+<img src="Klassic/preview.jpg" alt="preview.jpg">
+</div></section>
+
+    <section class="project">
+        <button class="toggle-button" onclick="toggleSection('Prostransnvo')">Интерьер с пространством</button>
+        <div class="project-content" id="Prostransnvo" style="display: none;">
+<img src="Prostransnvo/1.jpeg" alt="1.jpeg">
+<img src="Prostransnvo/2.jpeg" alt="2.jpeg">
+<img src="Prostransnvo/3.jpg" alt="3.jpg">
+<img src="Prostransnvo/4.jpg" alt="4.jpg">
+<img src="Prostransnvo/5.jpeg" alt="5.jpeg">
+<img src="Prostransnvo/preview.jpg" alt="preview.jpg">
+</div></section>
+
+    <section class="project">
+        <button class="toggle-button" onclick="toggleSection('Provans')">Тёплый Прованс</button>
+        <div class="project-content" id="Provans" style="display: none;">
+<img src="Provans/1.jpg" alt="1.jpg">
+<img src="Provans/2.jpg" alt="2.jpg">
+<img src="Provans/3.jpg" alt="3.jpg">
+<img src="Provans/4.jpg" alt="4.jpg">
+<img src="Provans/5.jpg" alt="5.jpg">
+<img src="Provans/preview.jpg" alt="preview.jpg">
+</div></section>
+
+    <section class="project">
+        <button class="toggle-button" onclick="toggleSection('Sovremenn')">Современное пространство</button>
+        <div class="project-content" id="Sovremenn" style="display: none;">
+<img src="Sovremenn/1.jpg" alt="1.jpg">
+<img src="Sovremenn/2.jpg" alt="2.jpg">
+<img src="Sovremenn/preview.jpg" alt="preview.jpg">
+</div></section>
+
+    <section class="project">
+        <button class="toggle-button" onclick="toggleSection('Teplo')">Интерьер с теплотой</button>
+        <div class="project-content" id="Teplo" style="display: none;">
+<img src="Teplo/1.jpg" alt="1.jpg">
+<img src="Teplo/2.jpg" alt="2.jpg">
+</div></section>
+
+</main>
+<footer>
+    <p>Контакты: elenasyrceva@gmail.com | Telegram: @elenasyrceva | VK: vk.com/elenasyrceva</p>
+</footer>
+<script>
+    function toggleSection(id) {
+        const section = document.getElementById(id);
+        section.style.display = section.style.display === "none" ? "block" : "none";
+    }
+</script>
+</body>
+</html>
