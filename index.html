@@ -56,9 +56,10 @@
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.6s ease;
-
-      display: none;
       margin-top: 20px;
+    }
+    .gallery.open {
+      max-height: 5000px;
     }
     .gallery img {
       width: 100%;
@@ -95,7 +96,7 @@
 </header>
 <main>
 
-<div class="project">
+<div class="project" data-folder="project1">
   <div class="project-preview">
     <img src="project1/preview.jpg" class="preview-block" alt="Превью">
     <div class="project-info">
@@ -104,12 +105,10 @@
       <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
     </div>
   </div>
-  <div class="gallery">
-    <img src="project1/preview.jpg" alt=""><img src="project1/1.jpg" alt=""><img src="project1/2.jpg" alt="">
-  </div>
+  <div class="gallery"></div>
 </div>
 
-<div class="project">
+<div class="project" data-folder="project2">
   <div class="project-preview row-reverse">
     <img src="project2/preview.jpg" class="preview-block" alt="Превью">
     <div class="project-info">
@@ -118,12 +117,10 @@
       <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
     </div>
   </div>
-  <div class="gallery">
-    <img src="project2/preview.jpg" alt=""><img src="project2/1.jpg" alt=""><img src="project2/2.jpg" alt=""><img src="project2/3.jpg" alt=""><img src="project2/4.jpg" alt=""><img src="project2/5.jpg" alt="">
-  </div>
+  <div class="gallery"></div>
 </div>
 
-<div class="project">
+<div class="project" data-folder="project3">
   <div class="project-preview">
     <img src="project3/preview.jpg" class="preview-block" alt="Превью">
     <div class="project-info">
@@ -132,12 +129,10 @@
       <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
     </div>
   </div>
-  <div class="gallery">
-    <img src="project3/preview.jpg" alt=""><img src="project3/3.jpg" alt=""><img src="project3/4.jpg" alt="">
-  </div>
+  <div class="gallery"></div>
 </div>
 
-<div class="project">
+<div class="project" data-folder="project4">
   <div class="project-preview row-reverse">
     <img src="project4/preview.jpg" class="preview-block" alt="Превью">
     <div class="project-info">
@@ -146,12 +141,10 @@
       <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
     </div>
   </div>
-  <div class="gallery">
-    <img src="project4/preview.jpg" alt=""><img src="project4/1.jpg" alt=""><img src="project4/2.jpg" alt="">
-  </div>
+  <div class="gallery"></div>
 </div>
 
-<div class="project">
+<div class="project" data-folder="project5">
   <div class="project-preview">
     <img src="project5/preview.jpg" class="preview-block" alt="Превью">
     <div class="project-info">
@@ -160,12 +153,10 @@
       <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
     </div>
   </div>
-  <div class="gallery">
-    <img src="project5/preview.jpg" alt=""><img src="project5/1.jpg" alt="">
-  </div>
+  <div class="gallery"></div>
 </div>
 
-<div class="project">
+<div class="project" data-folder="project6">
   <div class="project-preview row-reverse">
     <img src="project6/preview.jpg" class="preview-block" alt="Превью">
     <div class="project-info">
@@ -174,12 +165,10 @@
       <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
     </div>
   </div>
-  <div class="gallery">
-    <img src="project6/preview.jpg" alt=""><img src="project6/1.jpg" alt=""><img src="project6/2.jpg" alt=""><img src="project6/3.jpg" alt="">
-  </div>
+  <div class="gallery"></div>
 </div>
 
-<div class="project">
+<div class="project" data-folder="project7">
   <div class="project-preview">
     <img src="project7/preview.jpg" class="preview-block" alt="Превью">
     <div class="project-info">
@@ -188,9 +177,7 @@
       <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
     </div>
   </div>
-  <div class="gallery">
-    <img src="project7/preview.jpg" alt=""><img src="project7/1.jpg" alt=""><img src="project7/2.jpg" alt=""><img src="project7/3.jpg" alt=""><img src="project7/4.jpg" alt=""><img src="project7/5.jpg" alt="">
-  </div>
+  <div class="gallery"></div>
 </div>
 
 </main>
@@ -201,24 +188,35 @@
   function toggleGallery(button) {
     const project = button.closest('.project');
     const gallery = project.querySelector('.gallery');
+    const folder = project.getAttribute('data-folder');
     const preview = project.querySelector('.preview-block');
 
-    if (gallery.style.maxHeight && gallery.style.maxHeight !== "0px") {
-      gallery.style.maxHeight = "0";
+    if (gallery.classList.contains("open")) {
+      gallery.classList.remove("open");
       preview.style.display = "block";
+      gallery.innerHTML = "";
     } else {
-      gallery.style.display = "block"; // в случае если display был none
-      gallery.style.maxHeight = gallery.scrollHeight + "px";
       preview.style.display = "none";
-
-      // Вешаем обработчик на все изображения
-      gallery.querySelectorAll('img').forEach(img => {
-        img.onclick = () => {
-          gallery.style.maxHeight = "0";
-          preview.style.display = "block";
-        };
-      });
+      gallery.classList.add("open");
+      fetchGallery(folder, gallery);
     }
+  }
+
+  function fetchGallery(folder, container) {
+    // Имитация подгрузки заранее известных имён (можно автоматизировать через JSON в реальном проекте)
+    const imageNames = [ 'preview.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg' ];
+    imageNames.forEach(name => {
+      const img = document.createElement('img');
+      img.src = `${folder}/${name}`;
+      img.alt = '';
+      img.onerror = () => img.remove();
+      img.onclick = () => {
+        container.classList.remove("open");
+        container.innerHTML = "";
+        container.closest('.project').querySelector('.preview-block').style.display = "block";
+      };
+      container.appendChild(img);
+    });
   }
 </script>
 </body>
