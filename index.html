@@ -2,222 +2,680 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Портфолио Елена Сырцева</title>
+  <title>Elena Syrtceva — 3D Visualization</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #f5f0ea;
+      --dark: #2a2018;
+      --accent: #7a6045;
+      --light: #ede6dc;
+      --text: #3a2e20;
+      --muted: #9a8a78;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #fdf7f2;
-      margin: 0;
-      padding: 0;
-      color: #3a2a1b;
+      font-family: 'Jost', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
     }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: rgba(245, 240, 234, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(122, 96, 69, 0.12);
+    }
+
+    nav .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 18px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 36px;
+    }
+
+    nav ul a {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav ul a:hover { color: var(--dark); }
+
+    /* HERO */
     header {
-      background-color: #4a3824;
-      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
     }
-    header img {
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--dark);
+    }
+
+    .hero-bg img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
       display: block;
     }
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 30px 20px;
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 80px 48px 64px;
     }
-    .project {
-      margin-bottom: 50px;
-      border-bottom: 1px solid #d4c7bb;
-      padding-bottom: 30px;
+
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
     }
-    .project-preview {
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(56px, 8vw, 110px);
+      line-height: 0.95;
+      color: #fff;
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .hero-tags {
       display: flex;
+      gap: 24px;
       flex-wrap: wrap;
-      gap: 20px;
     }
-    .row-reverse {
-      flex-direction: row-reverse;
+
+    .hero-tag {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.2);
     }
-    .project-preview img {
-      max-width: 400px;
-      border-radius: 8px;
-      flex-shrink: 0;
+
+    /* SECTION LABEL */
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
-    .project-info {
+
+    .section-label::after {
+      content: '';
       flex: 1;
-      min-width: 280px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.25;
     }
-    .project-info h2 {
-      margin-top: 0;
-      font-size: 24px;
+
+    /* PROJECTS GRID */
+    #portfolio {
+      padding: 96px 48px;
+      max-width: 1400px;
+      margin: 0 auto;
     }
-    .gallery {
-      max-height: 0;
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .project-card {
+      position: relative;
       overflow: hidden;
-      transition: max-height 0.6s ease;
-      margin-top: 20px;
-    }
-    .gallery.open {
-      max-height: 5000px;
-    }
-    .gallery img {
-      width: 100%;
-      margin: 10px 0;
-      border-radius: 8px;
-    }
-    .view-button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #4a3824;
-      color: white;
-      border: none;
-      border-radius: 6px;
       cursor: pointer;
-      font-size: 14px;
+      background: var(--dark);
     }
-    .view-button:hover {
-      background-color: #3a2f20;
+
+    .project-card:first-child {
+      grid-column: span 2;
     }
-    footer {
-      background-color: #4a3824;
-      color: white;
+
+    .project-card:nth-child(4) {
+      grid-column: span 2;
+      grid-column-start: 2;
+    }
+
+    .project-card img.thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease, opacity 0.4s ease;
+    }
+
+    .project-card:first-child img.thumb,
+    .project-card:nth-child(4) img.thumb {
+      aspect-ratio: 16/9;
+    }
+
+    .project-card:hover img.thumb {
+      transform: scale(1.04);
+      opacity: 0.6;
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+      background: linear-gradient(to top, rgba(30,20,10,0.85) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .project-card:hover .card-overlay {
+      opacity: 1;
+    }
+
+    .card-number {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .card-btn {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      padding-bottom: 4px;
+      cursor: pointer;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: 'Jost', sans-serif;
+    }
+
+    /* Постоянный заголовок снизу на мобиле */
+    .card-title-static {
+      padding: 16px 20px;
+      background: var(--light);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: var(--text);
+      display: none;
+    }
+
+    /* GALLERY */
+    .gallery-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 15, 10, 0.97);
+      z-index: 200;
+      overflow-y: auto;
+    }
+
+    .gallery-overlay.active {
+      display: block;
+    }
+
+    .gallery-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 32px;
+    }
+
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 48px;
+    }
+
+    .gallery-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .gallery-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.45);
+      max-width: 420px;
+      margin-top: 12px;
+      font-weight: 200;
+    }
+
+    .gallery-close {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.6);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-family: 'Jost', sans-serif;
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+
+    .gallery-close:hover {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+    }
+
+    .gallery-images img {
+      width: 100%;
+      display: block;
+      margin-bottom: 4px;
+      border-radius: 2px;
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--dark);
+      padding: 96px 48px;
       text-align: center;
-      padding: 20px;
+      position: relative;
+      overflow: hidden;
     }
-    a {
-      color: inherit;
+
+    #contact::before {
+      content: 'ES';
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 280px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.03);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      letter-spacing: -0.05em;
+    }
+
+    .contact-label {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .contact-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 48px;
+      line-height: 1.1;
+    }
+
+    .contact-heading em {
+      font-style: italic;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: inline-block;
+      padding: 16px 36px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+      font-family: 'Jost', sans-serif;
+    }
+
+    .contact-link.primary {
+      background: #fff;
+      color: var(--dark);
+    }
+
+    .contact-link.primary:hover {
+      background: var(--bg);
+    }
+
+    .contact-link.secondary {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.6);
+    }
+
+    .contact-link.secondary:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: #fff;
+    }
+
+    /* TELEGRAM BUTTON */
+    .tg-float {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 99;
+      background: var(--dark);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 24px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-family: 'Jost', sans-serif;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: all 0.3s;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    .tg-float:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1a1208;
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+      padding: 24px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      nav ul { gap: 20px; }
+      .hero-content { padding: 60px 20px 48px; }
+      #portfolio { padding: 60px 20px; }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 3px;
+      }
+
+      .project-card:first-child,
+      .project-card:nth-child(4) {
+        grid-column: span 1;
+        grid-column-start: auto;
+      }
+
+      .project-card img.thumb,
+      .project-card:first-child img.thumb,
+      .project-card:nth-child(4) img.thumb {
+        aspect-ratio: 4/3;
+      }
+
+      .card-overlay { opacity: 1; }
+      .card-title-static { display: block; }
+
+      #contact { padding: 60px 20px; }
+      .tg-float { bottom: 20px; right: 20px; padding: 12px 18px; }
+    }
+
+    /* SCROLL ANIMATION */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Elena Syrtceva</a>
+  <ul>
+    <li><a href="#portfolio">Работы</a></li>
+    <li><a href="#contact">Контакт</a></li>
+    <li><a href="https://t.me/elsy2">Telegram</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
 <header>
-  <img src="banner.jpg" alt="Баннер">
+  <div class="hero-bg">
+    <img src="banner.jpg" alt="3D визуализация">
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">3D Visualization · Portfolio</p>
+    <h1 class="hero-name">Elena<br><em>Syrtceva</em></h1>
+    <div class="hero-tags">
+      <span class="hero-tag">Interiors</span>
+      <span class="hero-tag">Exteriors</span>
+      <span class="hero-tag">Furniture</span>
+      <span class="hero-tag">3ds Max · Corona Render</span>
+    </div>
+  </div>
 </header>
-<main>
 
-<div class="project" data-folder="project1">
-  <div class="project-preview">
-    <img src="project1/preview.jpg" class="preview-block" alt="Превью">
-    <div class="project-info">
-      <h2>Современная мягкость</h2>
-      <div class="description">Лёгкий, европейский минимализм. Простой силуэт + внимание к уюту — проект для жизни, а не на показ. Выполнено по дизайну Валерии Макаровой для европейского застройщика.</div>
-      <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <p class="section-label">Избранные проекты</p>
+
+  <div class="projects-grid">
+
+    <div class="project-card fade-up" data-folder="project1" data-title="Современная мягкость" data-desc="Лёгкий, европейский минимализм. Простой силуэт + внимание к уюту — проект для жизни, а не на показ.">
+      <img src="project1/preview.jpg" class="thumb" alt="Современная мягкость">
+      <div class="card-overlay">
+        <p class="card-number">01</p>
+        <h3 class="card-title">Современная мягкость</h3>
+        <button class="card-btn" onclick="openGallery(this)">Смотреть проект →</button>
+      </div>
+      <div class="card-title-static">Современная мягкость</div>
     </div>
-  </div>
-  <div class="gallery"></div>
-</div>
 
-<div class="project" data-folder="project2">
-  <div class="project-preview row-reverse">
-    <img src="project2/preview.jpg" class="preview-block" alt="Превью">
-    <div class="project-info">
-      <h2>Солнечный прованс в Калининграде</h2>
-      <div class="description">Тёплый прованс без клише — интерьер частного дома в Калининграде. Свет, дерево, рельеф и настроение, которое хочется сохранить. Проект дизайнера Марины Снигиревой.</div>
-      <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
+    <div class="project-card fade-up" data-folder="project2" data-title="Солнечный прованс в Калининграде" data-desc="Тёплый прованс без клише — интерьер частного дома в Калининграде. Свет, дерево, рельеф и настроение.">
+      <img src="project2/preview.jpg" class="thumb" alt="Прованс">
+      <div class="card-overlay">
+        <p class="card-number">02</p>
+        <h3 class="card-title">Солнечный прованс в Калининграде</h3>
+        <button class="card-btn" onclick="openGallery(this)">Смотреть проект →</button>
+      </div>
+      <div class="card-title-static">Солнечный прованс в Калининграде</div>
     </div>
-  </div>
-  <div class="gallery"></div>
-</div>
 
-<div class="project" data-folder="project3">
-  <div class="project-preview">
-    <img src="project3/preview.jpg" class="preview-block" alt="Превью">
-    <div class="project-info">
-      <h2>Пространство на вырост</h2>
-      <div class="description">Квартира в Москве для девушки — будущего архитектора. Современное, просторное, с характером. Свет, глубина и честные материалы. Проект по дизайну Екатерины Камбаровой.</div>
-      <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
+    <div class="project-card fade-up" data-folder="project3" data-title="Пространство на вырост" data-desc="Квартира в Москве для девушки — будущего архитектора. Современное, просторное, с характером.">
+      <img src="project3/preview.jpg" class="thumb" alt="Пространство на вырост">
+      <div class="card-overlay">
+        <p class="card-number">03</p>
+        <h3 class="card-title">Пространство на вырост</h3>
+        <button class="card-btn" onclick="openGallery(this)">Смотреть проект →</button>
+      </div>
+      <div class="card-title-static">Пространство на вырост</div>
     </div>
-  </div>
-  <div class="gallery"></div>
-</div>
 
-<div class="project" data-folder="project4">
-  <div class="project-preview row-reverse">
-    <img src="project4/preview.jpg" class="preview-block" alt="Превью">
-    <div class="project-info">
-      <h2>Тепло в деталях</h2>
-      <div class="description">Интерьер зоны отдыха, созданный в рамках проекта «Современная мягкость». Здесь больше личного: тактильность, полумрак, дерево и ощущение укрытости. Проект по дизайну Валерии Макаровой.</div>
-      <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
+    <div class="project-card fade-up" data-folder="project4" data-title="Тепло в деталях" data-desc="Интерьер зоны отдыха. Тактильность, полумрак, дерево и ощущение укрытости.">
+      <img src="project4/preview.jpg" class="thumb" alt="Тепло в деталях">
+      <div class="card-overlay">
+        <p class="card-number">04</p>
+        <h3 class="card-title">Тепло в деталях</h3>
+        <button class="card-btn" onclick="openGallery(this)">Смотреть проект →</button>
+      </div>
+      <div class="card-title-static">Тепло в деталях</div>
     </div>
-  </div>
-  <div class="gallery"></div>
-</div>
 
-<div class="project" data-folder="project5">
-  <div class="project-preview">
-    <img src="project5/preview.jpg" class="preview-block" alt="Превью">
-    <div class="project-info">
-      <h2>Атмосфера под заказ</h2>
-      <div class="description">Интерьер, созданный для сайта мебельной компании. По запросу заказчика разработан дизайн сцены: стилистика, композиция, освещение и настроение. Проект, где каждый элемент работает на образ и задачу бренда.</div>
-      <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
+    <div class="project-card fade-up" data-folder="project5" data-title="Атмосфера под заказ" data-desc="Интерьер для сайта мебельной компании. Стилистика, композиция, освещение и настроение — каждый элемент работает на образ бренда.">
+      <img src="project5/preview.jpg" class="thumb" alt="Атмосфера под заказ">
+      <div class="card-overlay">
+        <p class="card-number">05</p>
+        <h3 class="card-title">Атмосфера под заказ</h3>
+        <button class="card-btn" onclick="openGallery(this)">Смотреть проект →</button>
+      </div>
+      <div class="card-title-static">Атмосфера под заказ</div>
     </div>
-  </div>
-  <div class="gallery"></div>
-</div>
 
-<div class="project" data-folder="project6">
-  <div class="project-preview row-reverse">
-    <img src="project6/preview.jpg" class="preview-block" alt="Превью">
-    <div class="project-info">
-      <h2>Тихий домик</h2>
-      <div class="description">Проект визуализации гостевого дома в Латвии. Спокойная архитектура, свет и натуральные материалы — всё, чтобы в этом пространстве хотелось остаться. Реализуется по дизайну Валерии Макаровой.</div>
-      <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
+    <div class="project-card fade-up" data-folder="project6" data-title="Тихий домик" data-desc="Визуализация гостевого дома в Латвии. Спокойная архитектура, свет и натуральные материалы.">
+      <img src="project6/preview.jpg" class="thumb" alt="Тихий домик">
+      <div class="card-overlay">
+        <p class="card-number">06</p>
+        <h3 class="card-title">Тихий домик</h3>
+        <button class="card-btn" onclick="openGallery(this)">Смотреть проект →</button>
+      </div>
+      <div class="card-title-static">Тихий домик</div>
     </div>
-  </div>
-  <div class="gallery"></div>
-</div>
 
-<div class="project" data-folder="project7">
-  <div class="project-preview">
-    <img src="project7/preview.jpg" class="preview-block" alt="Превью">
-    <div class="project-info">
-      <h2>Классика в деталях</h2>
-      <div class="description">Визуализация дизайн-проекта квартиры в Санкт-Петербурге. Небольшое пространство объединило в себе кухню-гостиную и зону для подростка — с любовью к классике и вниманием к каждому метру. Проект вдохновлён идеями дизайнера Евы Любимовой. Авторская проработка моделей мебели и композиции.</div>
-      <button class="view-button" onclick="toggleGallery(this)">Смотреть проект</button>
+    <div class="project-card fade-up" data-folder="project7" data-title="Классика в деталях" data-desc="Визуализация квартиры в Санкт-Петербурге. Кухня-гостиная и зона для подростка — с любовью к классике.">
+      <img src="project7/preview.jpg" class="thumb" alt="Классика в деталях">
+      <div class="card-overlay">
+        <p class="card-number">07</p>
+        <h3 class="card-title">Классика в деталях</h3>
+        <button class="card-btn" onclick="openGallery(this)">Смотреть проект →</button>
+      </div>
+      <div class="card-title-static">Классика в деталях</div>
     </div>
-  </div>
-  <div class="gallery"></div>
-</div>
 
-</main>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="contact-label">Давайте работать вместе</p>
+  <h2 class="contact-heading">Есть проект?<br><em>Напишите мне.</em></h2>
+  <div class="contact-links">
+    <a href="https://t.me/elsy2" class="contact-link primary">→ Telegram</a>
+    <a href="mailto:elenasyrceva@gmail.com" class="contact-link secondary">elenasyrceva@gmail.com</a>
+  </div>
+</section>
+
 <footer>
-  <p>Связь: <a href="mailto:elenasyrceva@gmail.com">elenasyrceva@gmail.com</a> | Telegram: <a href="https://t.me/elsy2">@elsy2</a></p>
+  <p>© 2026 Elena Syrtceva · 3D Visualization · Abakan</p>
 </footer>
+
+<!-- TELEGRAM FLOAT -->
+<a href="https://t.me/elsy2" class="tg-float">Написать в Telegram</a>
+
+<!-- GALLERY OVERLAY -->
+<div class="gallery-overlay" id="galleryOverlay">
+  <div class="gallery-inner">
+    <div class="gallery-header">
+      <div>
+        <h2 class="gallery-title" id="galleryTitle"></h2>
+        <p class="gallery-desc" id="galleryDesc"></p>
+      </div>
+      <button class="gallery-close" onclick="closeGallery()">✕ Закрыть</button>
+    </div>
+    <div class="gallery-images" id="galleryImages"></div>
+  </div>
+</div>
+
 <script>
-  function toggleGallery(button) {
-    const project = button.closest('.project');
-    const gallery = project.querySelector('.gallery');
-    const folder = project.getAttribute('data-folder');
-    const preview = project.querySelector('.preview-block');
+  // Gallery
+  function openGallery(btn) {
+    const card = btn.closest('.project-card');
+    const folder = card.dataset.folder;
+    const title = card.dataset.title;
+    const desc = card.dataset.desc;
 
-    if (gallery.classList.contains("open")) {
-      gallery.classList.remove("open");
-      preview.style.display = "block";
-      gallery.innerHTML = "";
-    } else {
-      preview.style.display = "none";
-      gallery.classList.add("open");
-      fetchGallery(folder, gallery);
-    }
-  }
+    document.getElementById('galleryTitle').textContent = title;
+    document.getElementById('galleryDesc').textContent = desc;
 
-  function fetchGallery(folder, container) {
-    // Имитация подгрузки заранее известных имён (можно автоматизировать через JSON в реальном проекте)
-    const imageNames = [ 'preview.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg' ];
-    imageNames.forEach(name => {
+    const container = document.getElementById('galleryImages');
+    container.innerHTML = '';
+
+    const names = ['preview.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
+    names.forEach(name => {
       const img = document.createElement('img');
       img.src = `${folder}/${name}`;
-      img.alt = '';
       img.onerror = () => img.remove();
-      img.onclick = () => {
-        container.classList.remove("open");
-        container.innerHTML = "";
-        container.closest('.project').querySelector('.preview-block').style.display = "block";
-      };
       container.appendChild(img);
     });
+
+    document.getElementById('galleryOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
+
+  function closeGallery() {
+    document.getElementById('galleryOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('galleryOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeGallery();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeGallery();
+  });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
