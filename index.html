@@ -304,6 +304,19 @@
       font-weight: 200;
     }
 
+    .gallery-desc-block + .gallery-desc-block {
+      margin-top: 14px;
+    }
+
+    .gallery-desc-label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 4px;
+    }
+
     .gallery-images img {
       width: 100%;
       display: block;
@@ -553,7 +566,7 @@
       <div class="card-title-static">Современная мягкость</div>
     </div>
 
-    <div class="project-card fade-up" data-folder="project2" data-title="Солнечный прованс в Калининграде" data-desc="Тёплый прованс без клише — интерьер частного дома в Калининграде. Свет, дерево, рельеф и настроение.">
+    <div class="project-card fade-up" data-folder="project2" data-title="Солнечный прованс в Калининграде" data-desc-ru="Визуализация гостиной загородного дома в компиляции английской классики и французского Прованса. Пространство объединяет несколько зон — каминная с изразцовой печью, эркер с креслами, библиотека во всю стену. Цветочный текстиль, диваны Честерфилд и тёмный паркет создают атмосферу обжитого аристократического дома. Несколько ракурсов показывают, как пространство читается с разных точек — от крупных деталей до общих планов с видом через арки в соседние комнаты." data-desc-en="Visualization of a country house living room combining English classic style and French Provence. The space unites several zones: a fireplace area with a tiled stove, a bay window with armchairs, and a full-wall library. Floral textiles, Chesterfield sofas, and dark parquet create the atmosphere of a lived-in aristocratic home. Multiple viewpoints show how the space reads from different angles, from close-up details to wide shots through arches into neighboring rooms.">
       <img src="project2/preview.jpg" class="thumb" alt="Прованс">
       <div class="card-overlay">
         <p class="card-number">02</p>
@@ -673,10 +686,37 @@
 </div>
 
 <script>
+  function escapeHtml(value) {
+    return value
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#39;');
+  }
+
   function openGallery(btn) {
     const card = btn.closest('.project-card');
+    const galleryDesc = document.getElementById('galleryDesc');
+    const descRu = card.dataset.descRu;
+    const descEn = card.dataset.descEn;
+
     document.getElementById('galleryTitle').textContent = card.dataset.title;
-    document.getElementById('galleryDesc').textContent = card.dataset.desc;
+    if (descRu && descEn) {
+      galleryDesc.innerHTML = `
+        <span class="gallery-desc-block">
+          <span class="gallery-desc-label">RU</span>
+          ${escapeHtml(descRu)}
+        </span>
+        <span class="gallery-desc-block">
+          <span class="gallery-desc-label">EN</span>
+          ${escapeHtml(descEn)}
+        </span>
+      `;
+    } else {
+      galleryDesc.textContent = card.dataset.desc || '';
+    }
+
     const container = document.getElementById('galleryImages');
     container.innerHTML = '';
 
