@@ -553,9 +553,7 @@
       <div class="card-title-static">Современная мягкость</div>
     </div>
 
-    <div class="project-card fade-up" data-folder="project2" data-title="Солнечный прованс в Калининграде" data-desc="Тёплый прованс без клише — интерьер частного дома в Калининграде. Свет, дерево, рельеф и настроение.Визуализация гостиной загородного дома в стиле Прованс. Пространство объединяет несколько зон — каминная с изразцовой печью, эркер с креслами, библиотека во всю стену. Цветочный текстиль, диваны Честерфилд и тёмный паркет создают атмосферу обжитого аристократического дома.
-Несколько ракурслов показывают как пространство читается с разных точек — от крупных деталей до общих планов с видом через арки в соседние комнаты.
-">
+    <div class="project-card fade-up" data-folder="project2" data-title="Солнечный прованс в Калининграде" data-desc="Тёплый прованс без клише — интерьер частного дома в Калининграде. Свет, дерево, рельеф и настроение.">
       <img src="project2/preview.jpg" class="thumb" alt="Прованс">
       <div class="card-overlay">
         <p class="card-number">02</p>
@@ -681,7 +679,16 @@
     document.getElementById('galleryDesc').textContent = card.dataset.desc;
     const container = document.getElementById('galleryImages');
     container.innerHTML = '';
-    ['preview.jpg','1.jpg','2.jpg','3.jpg','4.jpg','5.jpg'].forEach(name => {
+
+    const imageNames = ['preview.jpg'];
+    const imageExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+    const maxNumberedImages = 30;
+
+    for (let i = 1; i <= maxNumberedImages; i++) {
+      imageExtensions.forEach(ext => imageNames.push(`${i}.${ext}`));
+    }
+
+    imageNames.forEach(name => {
       const img = document.createElement('img');
       img.src = `${card.dataset.folder}/${name}`;
       img.onerror = () => img.remove();
