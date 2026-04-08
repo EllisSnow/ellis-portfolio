@@ -284,7 +284,13 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      gap: 24px;
       margin-bottom: 48px;
+    }
+
+    .gallery-header > div {
+      flex: 1;
+      min-width: 0;
     }
 
     .gallery-title {
@@ -299,7 +305,8 @@
       font-size: 13px;
       line-height: 1.7;
       color: rgba(255,255,255,0.45);
-      max-width: 420px;
+      max-width: none;
+      width: 100%;
       margin-top: 12px;
       font-weight: 200;
     }
@@ -322,6 +329,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 20px;
       align-items: start;
+      width: 100%;
     }
 
     .gallery-desc-bilingual .gallery-desc-block + .gallery-desc-block {
@@ -333,6 +341,23 @@
       display: block;
       margin-bottom: 4px;
       border-radius: 2px;
+    }
+
+    .gallery-tags {
+      margin-top: 16px;
+      font-size: 11px;
+      line-height: 1.8;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.42);
+    }
+
+    .gallery-tags-label {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
     }
 
     /* ABOUT MODAL */
@@ -578,7 +603,7 @@
       <div class="card-title-static">Современная мягкость</div>
     </div>
 
-    <div class="project-card fade-up" data-folder="project2" data-title="Солнечный прованс в Калининграде" data-desc-ru="Визуализация гостиной загородного дома в компиляции английской классики и французского Прованса. Пространство объединяет несколько зон — каминная с изразцовой печью, эркер с креслами, библиотека во всю стену. Цветочный текстиль, диваны Честерфилд и тёмный паркет создают атмосферу обжитого аристократического дома. Несколько ракурсов показывают, как пространство читается с разных точек — от крупных деталей до общих планов с видом через арки в соседние комнаты." data-desc-en="Visualization of a country house living room combining English classic style and French Provence. The space unites several zones: a fireplace area with a tiled stove, a bay window with armchairs, and a full-wall library. Floral textiles, Chesterfield sofas, and dark parquet create the atmosphere of a lived-in aristocratic home. Multiple viewpoints show how the space reads from different angles, from close-up details to wide shots through arches into neighboring rooms.">
+    <div class="project-card fade-up" data-folder="project2" data-title="Солнечный прованс в Калининграде" data-desc-ru="Визуализация гостиной загородного дома в компиляции английской классики и французского Прованса. Пространство объединяет несколько зон — каминная с изразцовой печью, эркер с креслами, библиотека во всю стену. Цветочный текстиль, диваны Честерфилд и тёмный паркет создают атмосферу обжитого аристократического дома. Несколько ракурсов показывают, как пространство читается с разных точек — от крупных деталей до общих планов с видом через арки в соседние комнаты." data-desc-en="Visualization of a country house living room combining English classic style and French Provence. The space unites several zones: a fireplace area with a tiled stove, a bay window with armchairs, and a full-wall library. Floral textiles, Chesterfield sofas, and dark parquet create the atmosphere of a lived-in aristocratic home. Multiple viewpoints show how the space reads from different angles, from close-up details to wide shots through arches into neighboring rooms." data-tags="English classic interior, country house, Provence, Chesterfield sofa, tiled fireplace, 3D visualization, interior design, английская классика, Прованс, загородный дом, визуализация гостиной, изразцовая печь">
       <img src="project2/preview.jpg" class="thumb" alt="Прованс">
       <div class="card-overlay">
         <p class="card-number">02</p>
@@ -667,6 +692,7 @@
       <button class="modal-close-btn" onclick="closeGallery()">✕ Закрыть</button>
     </div>
     <div class="gallery-images" id="galleryImages"></div>
+    <p class="gallery-tags" id="galleryTags" style="display:none;"></p>
   </div>
 </div>
 
@@ -710,8 +736,10 @@
   function openGallery(btn) {
     const card = btn.closest('.project-card');
     const galleryDesc = document.getElementById('galleryDesc');
+    const galleryTags = document.getElementById('galleryTags');
     const descRu = card.dataset.descRu;
     const descEn = card.dataset.descEn;
+    const tags = card.dataset.tags;
 
     document.getElementById('galleryTitle').textContent = card.dataset.title;
     if (descRu && descEn) {
@@ -729,6 +757,14 @@
       `;
     } else {
       galleryDesc.textContent = card.dataset.desc || '';
+    }
+
+    if (tags) {
+      galleryTags.style.display = 'block';
+      galleryTags.innerHTML = `<span class="gallery-tags-label">Tags</span>${escapeHtml(tags)}`;
+    } else {
+      galleryTags.style.display = 'none';
+      galleryTags.textContent = '';
     }
 
     const container = document.getElementById('galleryImages');
