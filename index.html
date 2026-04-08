@@ -317,6 +317,17 @@
       margin-bottom: 4px;
     }
 
+    .gallery-desc-bilingual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .gallery-desc-bilingual .gallery-desc-block + .gallery-desc-block {
+      margin-top: 0;
+    }
+
     .gallery-images img {
       width: 100%;
       display: block;
@@ -511,6 +522,7 @@
       .card-overlay { opacity: 1; }
       .card-title-static { display: block; }
       .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .gallery-desc-bilingual { grid-template-columns: 1fr; gap: 14px; }
       .about-inner, .gallery-inner { padding: 60px 20px; }
       #contact { padding: 60px 20px; }
       .tg-float { bottom: 20px; right: 20px; padding: 12px 18px; }
@@ -704,13 +716,15 @@
     document.getElementById('galleryTitle').textContent = card.dataset.title;
     if (descRu && descEn) {
       galleryDesc.innerHTML = `
-        <span class="gallery-desc-block">
-          <span class="gallery-desc-label">RU</span>
-          ${escapeHtml(descRu)}
-        </span>
-        <span class="gallery-desc-block">
-          <span class="gallery-desc-label">EN</span>
-          ${escapeHtml(descEn)}
+        <span class="gallery-desc-bilingual">
+          <span class="gallery-desc-block">
+            <span class="gallery-desc-label">RU</span>
+            ${escapeHtml(descRu)}
+          </span>
+          <span class="gallery-desc-block">
+            <span class="gallery-desc-label">EN</span>
+            ${escapeHtml(descEn)}
+          </span>
         </span>
       `;
     } else {
