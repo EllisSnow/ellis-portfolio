@@ -54,15 +54,16 @@
       gap: 36px;
     }
 
-    nav ul a {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.3s;
-      cursor: pointer;
-    }
+   nav ul a {
+  font-size: 12px;  /* было 11px */
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dark);  /* было var(--muted) */
+  text-decoration: none;
+  transition: color 0.3s;
+  cursor: pointer;
+  font-weight: 400;  /* добавить чуть больше веса */
+}
 
     nav ul a:hover { color: var(--dark); }
 
