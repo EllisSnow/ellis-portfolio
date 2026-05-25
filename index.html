@@ -605,7 +605,7 @@
   <ul>
     <li><a href="#portfolio">Работы</a></li>
     <li><a href="#" onclick="openAbout(); return false;">Обо мне</a></li>
-    <li><a href="#contact">Контакты</a></li>
+    <li><a href="#contact">Контакт</a></li>
   </ul>
 </nav>
 
@@ -731,27 +731,54 @@
 
 <section id="contact">
   <p class="contact-label">Давайте работать вместе</p>
-  <h2 class="contact-heading">Есть проект?<br><em>Напишите мне</em></h2>
+  <h2 class="contact-heading">Есть проект?<br><em>Напишите мне.</em></h2>
   <div class="contact-links">
+    <a href="https://t.me/elsy2" class="contact-link primary">→ Telegram</a>
     <a href="mailto:elenasyrceva@gmail.com" class="contact-link secondary">elenasyrceva@gmail.com</a>
   </div>
 </section>
 
 <footer>
+  <!-- Brand Symbol -->
+  <div style="margin-bottom: 24px;">
+    <svg viewBox="0 0 80 80" width="48" height="48" fill="none"
+         xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto; opacity: 0.6;">
+      <rect x="3" y="3" width="74" height="74" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+      <line x1="40" y1="3" x2="40" y2="77" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>
+      <line x1="3" y1="40" x2="77" y2="40" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>
+      <!-- fog: left side -->
+      <circle cx="18" cy="18" r="3" fill="rgba(184,149,90,0.2)"/>
+      <circle cx="12" cy="26" r="4" fill="rgba(184,149,90,0.15)"/>
+      <circle cx="26" cy="25" r="2.5" fill="rgba(184,149,90,0.18)"/>
+      <circle cx="9" cy="34" r="3" fill="rgba(184,149,90,0.12)"/>
+      <circle cx="18" cy="56" r="3.5" fill="rgba(184,149,90,0.18)"/>
+      <circle cx="28" cy="66" r="2.5" fill="rgba(184,149,90,0.14)"/>
+      <!-- right: rooms -->
+      <rect x="47" y="8" width="26" height="22" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+      <rect x="52" y="22" width="6" height="7" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
+      <rect x="47" y="46" width="26" height="22" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+      <line x1="47" y1="58" x2="73" y2="58" stroke="rgba(255,255,255,0.3)" stroke-width="0.6"/>
+      <rect x="50" y="58" width="5" height="10" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
+      <!-- wipe -->
+      <path d="M38.5 5 Q41 40 38.5 75" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+      <ellipse cx="38.5" cy="4" rx="3" ry="4" fill="rgba(255,255,255,0.4)"/>
+    </svg>
+  </div>
+
   <div class="footer-social">
     <a href="https://t.me/elsy2" aria-label="Telegram" title="Telegram">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.121.099.155.232.171.326.016.094.037.308.021.475z"/>
       </svg>
     </a>
-   <a href="https://max.ru/u/f9LHodD0cOLk450VNldTonQA0hcimjdxbvMplzfWo-O4zqhy2uZe7gf6K5k" aria-label="MAX" title="MAX" target="_blank" rel="noopener noreferrer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-        <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="'Jost', 'Arial Black', sans-serif" font-weight="900" font-size="14" fill="rgba(255,255,255,0.5)">MAX</text>
-      </svg>
-    </a>
-   <a href="https://api.whatsapp.com/send?phone=79130524009" aria-label="WhatsApp" title="WhatsApp">
+    <a href="https://wa.me/79134400732" aria-label="WhatsApp" title="WhatsApp">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/>
+      </svg>
+    </a>
+    <a href="https://www.autodesk.com/products/3ds-max" aria-label="3ds Max" title="3ds Max">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L19.82 8 12 11.82 4.18 8 12 4.18zM4 9.47l7 3.5v6.85l-7-3.5V9.47zm16 0v6.85l-7 3.5v-6.85l7-3.5z"/>
       </svg>
     </a>
   </div>
@@ -760,6 +787,7 @@
 
 <a href="https://t.me/elsy2" class="tg-float">Написать в Telegram</a>
 
+<!-- GALLERY MODAL -->
 <div class="modal" id="galleryOverlay">
   <div class="gallery-inner">
     <div class="gallery-header">
@@ -774,12 +802,55 @@
   </div>
 </div>
 
+<!-- ABOUT MODAL -->
 <div class="modal" id="aboutModal">
   <div class="about-inner">
     <div class="about-header">
       <h2>Обо мне</h2>
       <button class="modal-close-btn" onclick="closeAbout()">✕ Закрыть</button>
     </div>
+    
+    <!-- Brand Symbol Large -->
+    <div style="text-align: center; margin-bottom: 64px;">
+      <svg id="brandSymbolLarge" viewBox="0 0 80 80" width="200" height="200" fill="none"
+           xmlns="http://www.w3.org/2000/svg" style="display: inline-block; opacity: 0;">
+        <rect x="3" y="3" width="74" height="74" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+        <line x1="40" y1="3" x2="40" y2="77" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+        <line x1="3" y1="40" x2="77" y2="40" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+        
+        <!-- fog: left side - animated -->
+        <circle class="fog-particle" cx="18" cy="18" r="3" fill="rgba(184,149,90,0.2)">
+          <animate attributeName="opacity" values="0.2;0.4;0.2" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="fog-particle" cx="12" cy="26" r="4" fill="rgba(184,149,90,0.15)">
+          <animate attributeName="opacity" values="0.15;0.35;0.15" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="fog-particle" cx="26" cy="25" r="2.5" fill="rgba(184,149,90,0.18)">
+          <animate attributeName="opacity" values="0.18;0.38;0.18" dur="3.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="fog-particle" cx="9" cy="34" r="3" fill="rgba(184,149,90,0.12)">
+          <animate attributeName="opacity" values="0.12;0.32;0.12" dur="5s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="fog-particle" cx="18" cy="56" r="3.5" fill="rgba(184,149,90,0.18)">
+          <animate attributeName="opacity" values="0.18;0.4;0.18" dur="4.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="fog-particle" cx="28" cy="66" r="2.5" fill="rgba(184,149,90,0.14)">
+          <animate attributeName="opacity" values="0.14;0.34;0.14" dur="3.8s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- right: rooms -->
+        <rect x="47" y="8" width="26" height="22" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+        <rect x="52" y="22" width="6" height="7" stroke="rgba(255,255,255,0.35)" stroke-width="0.7"/>
+        <rect x="47" y="46" width="26" height="22" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+        <line x1="47" y1="58" x2="73" y2="58" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
+        <rect x="50" y="58" width="5" height="10" stroke="rgba(255,255,255,0.35)" stroke-width="0.7"/>
+        
+        <!-- wipe -->
+        <path id="wipePath" d="M38.5 5 Q41 40 38.5 75" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/>
+        <ellipse id="wipeHand" cx="38.5" cy="4" rx="3" ry="4" fill="rgba(255,255,255,0.5)"/>
+      </svg>
+    </div>
+    
     <div class="about-grid">
       <img src="foto.jpg" alt="Elena Syrtceva" class="about-photo">
       <div>
@@ -787,14 +858,14 @@
           Я пришла в 3D визуализацию из психологии — после десяти лет работы с людьми. Говорить о себе мне всегда было сложнее, чем показывать — поэтому я выбрала профессию, где результат говорит сам за себя.
         </p>
         <p class="about-body">
-          В детстве я училась в художественной школе и мечтала стать художником. Today я совмещаю это с другой своей стороной — технической. Мне нравится разбираться в программах, осваивать новые инструменты, работать с нейросетями. 3D визуализация оказалась именно тем местом, где художник и технарь встретились.
+          В детстве я училась в художественной школе и мечтала стать художником. Сегодня я совмещаю это с другой своей стороной — технической. Мне нравится разбираться в программах, осваивать новые инструменты, работать с нейросетями. 3D визуализация оказалась именно тем местом, где художник и технарь встретились.
         </p>
         <p class="about-body">
           Работаю с дизайнерами интерьеров и производителями мебели. Беру на себя визуализацию интерьеров и экстерьеров — чтобы дизайнер мог освободить время для творчества или нового проекта. Соблюдаю сроки, держу клиента в курсе на каждом этапе, умею слышать задачу даже когда она сформулирована нечётко.
         </p>
         <p class="about-body">
-          В работе использую нейросети для генерации концептов и атмосферных ракурсов — это ускоряет поиск нужного настроения и расширяет визуальные возможности проекта.
-        </p>
+  В работе использую нейросети для генерации концептов и атмосферных ракурсов — это ускоряет поиск нужного настроения и расширяет визуальные возможности проекта.
+</p>
       </div>
       <img src="sertif.jpg" alt="Сертификат Autodesk" class="about-certificate">
       <img src="diplom.png" alt="Диплом DISKILL" class="about-diploma">
@@ -876,11 +947,29 @@
   function openAbout() {
     document.getElementById('aboutModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
+    
+    // Animate brand symbol appearance
+    setTimeout(() => {
+      const symbol = document.getElementById('brandSymbolLarge');
+      if (symbol) {
+        symbol.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
+        symbol.style.opacity = '1';
+        symbol.style.transform = 'scale(1)';
+      }
+    }, 100);
   }
 
   function closeAbout() {
-    document.getElementById('aboutModal').style.display = 'none';
-    document.body.style.overflow = '';
+    const symbol = document.getElementById('brandSymbolLarge');
+    if (symbol) {
+      symbol.style.opacity = '0';
+      symbol.style.transform = 'scale(0.95)';
+    }
+    
+    setTimeout(() => {
+      document.getElementById('aboutModal').style.display = 'none';
+      document.body.style.overflow = '';
+    }, 300);
   }
 
   document.getElementById('galleryOverlay').addEventListener('click', function(e) {
