@@ -97,14 +97,18 @@
       position: relative;
       z-index: 2;
       padding: 80px 48px 64px;
+      background: rgba(0,0,0,0.4);
     }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 80px 48px 64px;
-  background: rgba(0,0,0,0.4);
-}
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 24px;
+      font-weight: 300;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
 
     .hero-name {
       font-family: 'Cormorant Garamond', serif;
@@ -836,47 +840,6 @@
       <button class="modal-close-btn" onclick="closeAbout()">✕ Закрыть</button>
     </div>
     
-    <!-- Brand Symbol Large -->
-    <div style="text-align: center; margin-bottom: 64px;">
-      <svg id="brandSymbolLarge" viewBox="0 0 80 80" width="200" height="200" fill="none"
-           xmlns="http://www.w3.org/2000/svg" style="display: inline-block; opacity: 0;">
-        <rect x="3" y="3" width="74" height="74" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
-        <line x1="40" y1="3" x2="40" y2="77" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
-        <line x1="3" y1="40" x2="77" y2="40" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
-        
-        <!-- fog: left side - animated -->
-        <circle class="fog-particle" cx="18" cy="18" r="3" fill="rgba(184,149,90,0.2)">
-          <animate attributeName="opacity" values="0.2;0.4;0.2" dur="3s" repeatCount="indefinite"/>
-        </circle>
-        <circle class="fog-particle" cx="12" cy="26" r="4" fill="rgba(184,149,90,0.15)">
-          <animate attributeName="opacity" values="0.15;0.35;0.15" dur="4s" repeatCount="indefinite"/>
-        </circle>
-        <circle class="fog-particle" cx="26" cy="25" r="2.5" fill="rgba(184,149,90,0.18)">
-          <animate attributeName="opacity" values="0.18;0.38;0.18" dur="3.5s" repeatCount="indefinite"/>
-        </circle>
-        <circle class="fog-particle" cx="9" cy="34" r="3" fill="rgba(184,149,90,0.12)">
-          <animate attributeName="opacity" values="0.12;0.32;0.12" dur="5s" repeatCount="indefinite"/>
-        </circle>
-        <circle class="fog-particle" cx="18" cy="56" r="3.5" fill="rgba(184,149,90,0.18)">
-          <animate attributeName="opacity" values="0.18;0.4;0.18" dur="4.5s" repeatCount="indefinite"/>
-        </circle>
-        <circle class="fog-particle" cx="28" cy="66" r="2.5" fill="rgba(184,149,90,0.14)">
-          <animate attributeName="opacity" values="0.14;0.34;0.14" dur="3.8s" repeatCount="indefinite"/>
-        </circle>
-        
-        <!-- right: rooms -->
-        <rect x="47" y="8" width="26" height="22" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
-        <rect x="52" y="22" width="6" height="7" stroke="rgba(255,255,255,0.35)" stroke-width="0.7"/>
-        <rect x="47" y="46" width="26" height="22" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
-        <line x1="47" y1="58" x2="73" y2="58" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
-        <rect x="50" y="58" width="5" height="10" stroke="rgba(255,255,255,0.35)" stroke-width="0.7"/>
-        
-        <!-- wipe -->
-        <path id="wipePath" d="M38.5 5 Q41 40 38.5 75" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/>
-        <ellipse id="wipeHand" cx="38.5" cy="4" rx="3" ry="4" fill="rgba(255,255,255,0.5)"/>
-      </svg>
-    </div>
-    
     <div class="about-grid">
       <img src="foto.jpg" alt="Elena Syrtceva" class="about-photo">
       <div>
@@ -973,29 +936,11 @@
   function openAbout() {
     document.getElementById('aboutModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
-    
-    // Animate brand symbol appearance
-    setTimeout(() => {
-      const symbol = document.getElementById('brandSymbolLarge');
-      if (symbol) {
-        symbol.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
-        symbol.style.opacity = '1';
-        symbol.style.transform = 'scale(1)';
-      }
-    }, 100);
   }
 
   function closeAbout() {
-    const symbol = document.getElementById('brandSymbolLarge');
-    if (symbol) {
-      symbol.style.opacity = '0';
-      symbol.style.transform = 'scale(0.95)';
-    }
-    
-    setTimeout(() => {
-      document.getElementById('aboutModal').style.display = 'none';
-      document.body.style.overflow = '';
-    }, 300);
+    document.getElementById('aboutModal').style.display = 'none';
+    document.body.style.overflow = '';
   }
 
   document.getElementById('galleryOverlay').addEventListener('click', function(e) {
